@@ -1,4 +1,9 @@
+#!/bin/bash
+
+# In thông báo bắt đầu Step 3
 printf "$START" "3" "Create resource dependencies"
+
+# Task 3: Gán nội dung vào các biến TASK_3_STEP_X
 export TASK_3_STEP_2=$(cat <<EOF
 terraform {
   required_providers {
@@ -18,6 +23,7 @@ provider "google" {
 resource "google_compute_network" "vpc_network" {
   name = "terraform-network"
 }
+
 resource "google_compute_instance" "vm_instance" {
   name         = "terraform-instance"
   machine_type = "e2-micro"
@@ -36,6 +42,7 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
 }
+
 resource "google_compute_address" "vm_static_ip" {
   name = "terraform-static-ip"
 }
@@ -61,6 +68,7 @@ provider "google" {
 resource "google_compute_network" "vpc_network" {
   name = "terraform-network"
 }
+
 resource "google_compute_instance" "vm_instance" {
   name         = "terraform-instance"
   machine_type = "e2-micro"
@@ -79,12 +87,14 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
 }
+
 resource "google_compute_address" "vm_static_ip" {
   name = "terraform-static-ip"
 }
+
 # New resource for the storage bucket our application will use.
 resource "google_storage_bucket" "example_bucket" {
-  name     = "$UNIQUE_BUCKET_NAME>"
+  name     = "$UNIQUE_BUCKET_NAME"
   location = "US"
 
   website {
@@ -110,8 +120,7 @@ resource "google_compute_instance" "another_instance" {
 
   network_interface {
     network = google_compute_network.vpc_network.self_link
-    access_config {
-    }
+    access_config {}
   }
 }
 EOF
@@ -128,19 +137,30 @@ if [[ "$confirm3" == "y" || "$confirm3" == "Y" ]]; then
     terraform apply --auto-approve
     printf "$END_STEP" "3" "1"
 
+    ## Step 2
     read -p "$(printf "$PROMPT_TEMPLATE_STEP" "3" "2")" confirm3_2
     if [[ "$confirm3_2" == "y" || "$confirm3_2" == "Y" ]]; then
+        printf "$START_STEP" "3" "2" "Assigning a static IP address"
+        # Ghi nội dung vào main.tf
         printf "%s\n" "$TASK_3_STEP_2" > main.tf
         terraform plan -out static_ip
         terraform apply "static_ip"
-        printf "$END_STEP" "3" "2" "Assigning a static IP address"
+        printf "$END_STEP" "3" "2"
         printf "$CHECK_STEP" "3" "2" "Check Create Resource Dependencies"
+    fi  # ✅ Đóng `if` của Step 2
+
+    ## Step 3
+    read -p "$(printf "$PROMPT_TEMPLATE_STEP" "3" "3")" confirm3_3  # ✅ Sửa lỗi thiếu read cho Step 3
     if [[ "$confirm3_3" == "y" || "$confirm3_3" == "Y" ]]; then
+        printf "$START_STEP" "3" "3" "Check Create bucket dependent instance"
+        # Ghi nội dung vào main.tf
         printf "%s\n" "$TASK_3_STEP_3" > main.tf
         terraform apply --auto-approve
-        printf "$END_STEP" "3" "3" "Check Create bucket dependent instance"
+        printf "$END_STEP" "3" "3"
+    fi  # ✅ Đóng `if` của Step 3
+
     printf "$END" "3"
 else
     printf "$CANCLE" "3"
     exit 1
-fi
+fi  # ✅ Đóng `if` lớn nhất của Step 3
