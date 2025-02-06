@@ -136,7 +136,7 @@ if [[ "$confirm2" == "y" || "$confirm2" == "Y" ]]; then
     read -p "$(printf "$PROMPT_TEMPLATE_STEP" "2" "2")" confirm2_2
     if [[ "$confirm2_2" == "y" || "$confirm2_2" == "Y" ]]; then
         printf "$START_STEP" "2" "2" "Changing resources"
-        # Ghi nội dung vào main.tf
+        # Override main.tf
         printf "%s\n" "$TASK_2_STEP_2" > main.tf
         # Terraform Command
         terraform apply --auto-approve
@@ -145,7 +145,7 @@ if [[ "$confirm2" == "y" || "$confirm2" == "Y" ]]; then
     fi
 
     ## Step 3
-    read -p "$(printf "$PROMPT_TEMPLATE_STEP" "2" "3")" confirm2_3  # ✅ Sửa "2" "2" thành "2" "3"
+    read -p "$(printf "$PROMPT_TEMPLATE_STEP" "2" "3")" confirm2_3
     if [[ "$confirm2_3" == "y" || "$confirm2_3" == "Y" ]]; then
         printf "$START_STEP" "2" "3" "Destructive changes"
         # Ghi nội dung vào main.tf
@@ -156,7 +156,7 @@ if [[ "$confirm2" == "y" || "$confirm2" == "Y" ]]; then
     fi
 
     ## Step 4
-    read -p "$(printf "$PROMPT_TEMPLATE_STEP" "2" "4")" confirm2_4  # ✅ Sửa "2" "2" thành "2" "3"
+    read -p "$(printf "$PROMPT_TEMPLATE_STEP" "2" "4")" confirm2_4
     if [[ "$confirm2_4" == "y" || "$confirm2_4" == "Y" ]]; then
         printf "$START_STEP" "2" "4" "Destroy infrastructure"
         # Terraform Command

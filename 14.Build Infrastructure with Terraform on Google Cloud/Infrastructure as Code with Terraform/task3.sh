@@ -1,9 +1,7 @@
 #!/bin/bash
-
-# In thông báo bắt đầu Step 3
 printf "$START" "3" "Create resource dependencies"
 
-# Task 3: Gán nội dung vào các biến TASK_3_STEP_X
+# Input env
 export TASK_3_STEP_2=$(cat <<EOF
 terraform {
   required_providers {
@@ -141,26 +139,27 @@ if [[ "$confirm3" == "y" || "$confirm3" == "Y" ]]; then
     read -p "$(printf "$PROMPT_TEMPLATE_STEP" "3" "2")" confirm3_2
     if [[ "$confirm3_2" == "y" || "$confirm3_2" == "Y" ]]; then
         printf "$START_STEP" "3" "2" "Assigning a static IP address"
-        # Ghi nội dung vào main.tf
+        # Override main.tf
         printf "%s\n" "$TASK_3_STEP_2" > main.tf
         terraform plan -out static_ip
         terraform apply "static_ip"
         printf "$END_STEP" "3" "2"
         printf "$CHECK_STEP" "3" "2" "Check Create Resource Dependencies"
-    fi  # ✅ Đóng `if` của Step 2
+    fi
 
     ## Step 3
-    read -p "$(printf "$PROMPT_TEMPLATE_STEP" "3" "3")" confirm3_3  # ✅ Sửa lỗi thiếu read cho Step 3
+    read -p "$(printf "$PROMPT_TEMPLATE_STEP" "3" "3")" confirm3_3
     if [[ "$confirm3_3" == "y" || "$confirm3_3" == "Y" ]]; then
         printf "$START_STEP" "3" "3" "Check Create bucket dependent instance"
-        # Ghi nội dung vào main.tf
+        # Override main.tf
         printf "%s\n" "$TASK_3_STEP_3" > main.tf
         terraform apply --auto-approve
         printf "$END_STEP" "3" "3"
-    fi  # ✅ Đóng `if` của Step 3
+        printf "$END_STEP" "3" "3" "Check Create bucket dependent instance"
+    fi
 
     printf "$END" "3"
 else
     printf "$CANCLE" "3"
     exit 1
-fi  # ✅ Đóng `if` lớn nhất của Step 3
+fi
