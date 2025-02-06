@@ -9,25 +9,25 @@ MAGENTA='\033[0;35m'    # MAGENTA - FOCUS
 CYAN='\033[0;36m'       # CYAN - ASK
 RESET='\033[0m'         # RESET - RESET
 ### Input env
-# Input PROJECT_ID
-if [[ -z "$PROJECT_ID" ]]; then
-    read -p "Input PROJECT_ID: " PROJECT_ID
-fi
+# # Input PROJECT_ID
+# if [[ -z "$PROJECT_ID" ]]; then
+#     read -p "Input PROJECT_ID: " PROJECT_ID
+# fi
 
-# Input REGION
-if [[ -z "$REGION" ]]; then
-    read -p "Input REGION: " REGION
-fi
+# # Input REGION
+# if [[ -z "$REGION" ]]; then
+#     read -p "Input REGION: " REGION
+# fi
 
-# Input ZONE
-if [[ -z "$ZONE" ]]; then
-    read -p "Input ZONE: " ZONE
-fi
+# # Input ZONE
+# if [[ -z "$ZONE" ]]; then
+#     read -p "Input ZONE: " ZONE
+# fi
 
-# Input UNIQUE_BUCKET_NAME
-if [[ -z "$UNIQUE_BUCKET_NAME" ]]; then
-    read -p "Input UNIQUE_BUCKET_NAME: " UNIQUE_BUCKET_NAME
-fi
+# # Input UNIQUE_BUCKET_NAME
+# if [[ -z "$UNIQUE_BUCKET_NAME" ]]; then
+#     read -p "Input UNIQUE_BUCKET_NAME: " UNIQUE_BUCKET_NAME
+# fi
 
 # Export env
 export INPUT_ERROR="${RED}Errors: Please setup PROJECT_ID, REGION, ZONE, UNIQUE_BUCKET_NAME env before run script.${RESET}"
@@ -46,7 +46,9 @@ if [[ -z "$PROJECT_ID" || -z "$REGION" || -z "$ZONE"|| -z "$UNIQUE_BUCKET_NAME" 
     exit 1
 fi
 
-export PROJECT_ID REGION ZONE UNIQUE_BUCKET_NAME
+export PROJECT_ID=$(gcloud config list --format 'value(core.project)')
+export NETWORK_NAME="example-vpc"
+export REGION-"us-west1"
 
 gcloud auth list
 gcloud config list project

@@ -1,0 +1,13 @@
+Guide to Complete Interact with Terraform Modules:
+Task 1. Use modules from the Registry
+    - Step 1: Create a Terraform configuration
+    - Step 2: Define root input variables
+Task 2. Change infrastructure
+    - Step 1: Adding resources
+    - Step 2: Changing resources -> Check Change Infrastructure
+    - Step 3: Destructive changes
+    - Step 4: Destroy infrastructure -> Check Destructive Changes
+Task 3. Create resource dependencies
+    - Step 1: Recreate resource dependencies
+    - Step 2: Assigning a static IP address -> Check Create Resource Dependencies
+    - Step 3: Implicit and explicit dependencies -> Check Create bucket dependent instance
