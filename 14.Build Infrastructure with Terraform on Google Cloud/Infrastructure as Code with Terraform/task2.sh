@@ -1,4 +1,5 @@
-export TASK_2_STEP_1="terraform {
+export TASK_2_STEP_1=$(cat <<EOF
+terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
@@ -31,8 +32,12 @@ resource "google_compute_instance" "vm_instance" {
     access_config {
     }
   }
-}"
-export TASK_2_STEP_2="terraform {
+}
+EOF
+)
+
+export TASK_2_STEP_2=$(cat <<EOF
+terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
@@ -66,9 +71,12 @@ resource "google_compute_instance" "vm_instance" {
     access_config {
     }
   }
-}"
+}
+EOF
+)
 
-export TASK_2_STEP_3="terraform {
+export TASK_2_STEP_3=$(cat <<EOF
+terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
@@ -102,7 +110,9 @@ resource "google_compute_instance" "vm_instance" {
     access_config {
     }
   }
-}"
+}
+EOF
+)
 
 ### Task 2:
 read -p "$(printf "$PROMPT_TEMPLATE" "2")" confirm2

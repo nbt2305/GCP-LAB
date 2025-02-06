@@ -1,5 +1,6 @@
 # Task 1
-export TASK_1="terraform {
+export TASK_1=$(cat <<EOF
+terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
@@ -16,7 +17,10 @@ provider "google" {
 
 resource "google_compute_network" "vpc_network" {
   name = "terraform-network"
-}"
+}
+EOF
+)
+
 
 ### Task 1:
 printf "$START" "1" "Build infrastructure"

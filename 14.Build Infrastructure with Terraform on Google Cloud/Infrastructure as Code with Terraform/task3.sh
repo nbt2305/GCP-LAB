@@ -1,4 +1,5 @@
-export TASK_3_STEP_1="terraform {
+export TASK_3_STEP_1=$(cat <<EOF
+terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
@@ -36,9 +37,12 @@ resource "google_compute_instance" "vm_instance" {
 }
 resource "google_compute_address" "vm_static_ip" {
   name = "terraform-static-ip"
-}"
+}
+EOF
+)
 
-export TASK_3_STEP_2="terraform {
+export TASK_3_STEP_2=$(cat <<EOF
+terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
@@ -108,7 +112,9 @@ resource "google_compute_instance" "another_instance" {
     access_config {
     }
   }
-}"
+}
+EOF
+)
 
 ### Task 3:
 read -p "$(printf "$PROMPT_TEMPLATE" "3")" confirm3
