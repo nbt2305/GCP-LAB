@@ -1,5 +1,23 @@
 #!/bin/bash
 
+# Kiểm tra nếu PROJECT_ID chưa có giá trị thì yêu cầu nhập
+if [[ -z "$PROJECT_ID" ]]; then
+    read -p "Nhập PROJECT_ID: " PROJECT_ID
+fi
+
+# Kiểm tra nếu REGION chưa có giá trị thì yêu cầu nhập
+if [[ -z "$REGION" ]]; then
+    read -p "Nhập REGION: " REGION
+fi
+
+# Kiểm tra nếu ZONE chưa có giá trị thì yêu cầu nhập
+if [[ -z "$ZONE" ]]; then
+    read -p "Nhập ZONE: " ZONE
+fi
+
+# Xuất lại các biến để đảm bảo Terraform có thể đọc được
+export PROJECT_ID REGION ZONE
+
 echo "Tiếp tục thực hiện Step 1..."
 gcloud auth list
 gcloud config list project
