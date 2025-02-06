@@ -22,6 +22,17 @@ RESET=`tput sgr0`
 
 echo "${BG_MAGENTA}${BOLD}Starting Execution${RESET}"
 
+# Input REGION
+if [[ -z "$REGION" ]]; then
+    read -p "Input REGION: " REGION
+fi
+export INPUT_ERROR="${RED}Errors: Please setup REGION env before run script.${RESET}"
+# Check env
+if [[ -z "$REGION" ]]; then
+    echo -e $INPUT_ERROR
+    exit 1
+fi
+
 git clone https://github.com/terraform-google-modules/terraform-google-network
 
 cd terraform-google-network
