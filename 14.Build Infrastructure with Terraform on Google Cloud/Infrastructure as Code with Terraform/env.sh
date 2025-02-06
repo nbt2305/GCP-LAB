@@ -21,6 +21,12 @@ if [[ -z "$UNIQUE_BUCKET_NAME" ]]; then
     read -p "Nhập UNIQUE_BUCKET_NAME: " UNIQUE_BUCKET_NAME
 fi
 
+# Check env
+if [[ -z "$PROJECT_ID" || -z "$REGION" || -z "$ZONE"||| -z "$UNIQUE_BUCKET_NAME" ]]; then
+    echo "Errors: Please setup PROJECT_ID, REGION, ZONE, UNIQUE_BUCKET_NAME env before run script."
+    exit 1
+fi
+
 # Export env
 export PROJECT_ID REGION ZONE UNIQUE_BUCKET_NAME
 export START="Starting Task %s: %s...\n"
