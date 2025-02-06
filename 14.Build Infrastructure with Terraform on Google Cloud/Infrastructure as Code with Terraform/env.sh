@@ -22,7 +22,7 @@ if [[ -z "$UNIQUE_BUCKET_NAME" ]]; then
 fi
 
 # Check env
-if [[ -z "$PROJECT_ID" || -z "$REGION" || -z "$ZONE"||| -z "$UNIQUE_BUCKET_NAME" ]]; then
+if [[ -z "$PROJECT_ID" || -z "$REGION" || -z "$ZONE"|| -z "$UNIQUE_BUCKET_NAME" ]]; then
     echo "Errors: Please setup PROJECT_ID, REGION, ZONE, UNIQUE_BUCKET_NAME env before run script."
     exit 1
 fi
@@ -36,3 +36,6 @@ export END_STEP="Congratulations complete Task %s - Step %s!\n"
 export CANCEL="Proccess is canceled after Task %s.\n"
 export PROMPT_TEMPLATE="Do you want to continue Task %s? (y/Y to continue): "
 export PROMPT_TEMPLATE_STEP="Do you want to continue Task %s - Step %s? (y/Y to continue): "
+
+gcloud auth list
+gcloud config list project
