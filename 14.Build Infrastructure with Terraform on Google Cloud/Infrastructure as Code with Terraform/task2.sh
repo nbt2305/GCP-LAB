@@ -123,7 +123,8 @@ if [[ "$confirm2" == "y" || "$confirm2" == "Y" ]]; then
     ## Step 1
     printf "$START_STEP" "1" "2"
     # Override main.tf
-    cat $TASK_2_STEP_1 > main.tf
+    printf "%s\n" "$TASK_2_STEP_1" > main.tf
+
     # Terraform Command
     terraform apply --auto-approve
     printf "$END_STEP" "2" "1"
@@ -133,7 +134,7 @@ if [[ "$confirm2" == "y" || "$confirm2" == "Y" ]]; then
     if [[ "$confirm2_2" == "y" || "$confirm2_2" == "Y" ]]; then
         printf "$START_STEP" "2" "2"
         # Override main.tf
-        cat $TASK_2_STEP_2 > main.tf
+        printf "%s\n" "$TASK_2_STEP_2" > main.tf
         # Terraform Command
         terraform apply --auto-approve
         printf "$END_STEP" "2" "2"
@@ -143,7 +144,7 @@ if [[ "$confirm2" == "y" || "$confirm2" == "Y" ]]; then
     if [[ "$confirm2_3" == "y" || "$confirm2_3" == "Y" ]]; then
         printf "$START_STEP" "2" "3"
         # Override main.tf
-        cat $TASK_2_STEP_3 > main.tf
+        printf "%s\n" "$TASK_2_STEP_3" > main.tf
         # Terraform Command
         terraform destroy --auto-approve
         printf "$END_STEP" "2" "3"

@@ -125,12 +125,12 @@ if [[ "$confirm3" == "y" || "$confirm3" == "Y" ]]; then
     terraform apply --auto-approve
     read -p "$(printf "$PROMPT_TEMPLATE_STEP" "3" "1")" confirm3_1
     if [[ "$confirm3_1" == "y" || "$confirm3_1" == "Y" ]]; then
-        cat $TASK_3_STEP_1 > main.tf
+        printf "%s\n" "$TASK_3_STEP_1" > main.tf
         terraform plan -out static_ip
         terraform apply "static_ip"
         printf "$END_STEP" "3" "1"
     if [[ "$confirm3_2" == "y" || "$confirm3_2" == "Y" ]]; then
-        cat $TASK_3_STEP_2 > main.tf
+        printf "%s\n" "$TASK_3_STEP_2" > main.tf
         terraform apply --auto-approve
         printf "$END_STEP" "3" "2"
     printf "$END" "3"
