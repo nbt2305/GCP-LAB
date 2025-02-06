@@ -1,4 +1,5 @@
 printf "$START" "1" "Build infrastructure"
+printf "Helloooo!!!"
 # Task 1
 export TASK_1=$(cat <<EOF
 terraform {
