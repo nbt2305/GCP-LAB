@@ -1,11 +1,7 @@
 #!/bin/bash
 
-# In thông báo bắt đầu Step 1
 printf "$START" "1" "Build infrastructure"
-
-printf "Helloooo!!!\n"
-
-# Task 1: Gán nội dung vào biến TASK_1 và giữ đúng định dạng
+# Init env
 TASK_1=$(cat <<EOF
 terraform {
   required_providers {
@@ -29,12 +25,13 @@ EOF
 )
 
 ### Task 1:
-# Ghi nội dung vào main.tf (Dùng printf để giữ đúng định dạng)
+# Override main.tf
 printf "%s\n" "$TASK_1" > main.tf
 
 # Terraform Commands
 terraform init
 terraform apply --auto-approve
 
-# In thông báo kết thúc Step 1
+# End Step 1
 printf "$END" "1"
+printf "$CHECK" "1" "Check Creating Resources in terraform"

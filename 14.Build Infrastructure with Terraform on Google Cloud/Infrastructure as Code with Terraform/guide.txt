@@ -3,7 +3,7 @@ Task 1. Build infrastructure
     - Step 1: Build resources -> Check Creating Resources in terraform 
 Task 2. Change infrastructure
     - Step 1: Adding resources
-    - Step 2: Changing resources -> check Change Infrastructure
+    - Step 2: Changing resources -> Check Change Infrastructure
     - Step 3: Destructive changes
     - Step 4: Destroy infrastructure -> Check Destructive Changes
 Task 3. Create resource dependencies

@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# In thông báo bắt đầu Step 2
 printf "$START" "2" "Change infrastructure"
-
-# Task 2: Gán nội dung vào các biến TASK_2_STEP_X
+# Input env
 export TASK_2_STEP_1=$(cat <<EOF
 terraform {
   required_providers {
@@ -127,8 +125,8 @@ if [[ "$confirm2" == "y" || "$confirm2" == "Y" ]]; then
     printf "$START" "2" "Change infrastructure"
 
     ## Step 1
-    printf "$START_STEP" "1" "2" "Adding resources"
-    # Ghi nội dung vào main.tf
+    printf "$START_STEP" "2" "1" "Adding resources"
+    # Override main.tf
     printf "%s\n" "$TASK_2_STEP_1" > main.tf
     # Terraform Command
     terraform apply --auto-approve
@@ -143,8 +141,8 @@ if [[ "$confirm2" == "y" || "$confirm2" == "Y" ]]; then
         # Terraform Command
         terraform apply --auto-approve
         printf "$END_STEP" "2" "2"
-        printf "$CHECK_STEP" "2" "2" "Changing resources"
-    fi  # ✅ Đóng `if` của Step 2
+        printf "$CHECK_STEP" "2" "2" "Check Change Infrastructure"
+    fi
 
     ## Step 3
     read -p "$(printf "$PROMPT_TEMPLATE_STEP" "2" "3")" confirm2_3  # ✅ Sửa "2" "2" thành "2" "3"
