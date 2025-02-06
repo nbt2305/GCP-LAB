@@ -1,3 +1,4 @@
+printf "$START" "3" "Create resource dependencies"
 export TASK_3_STEP_1=$(cat <<EOF
 terraform {
   required_providers {
@@ -118,7 +119,6 @@ EOF
 
 ### Task 3:
 read -p "$(printf "$PROMPT_TEMPLATE" "3")" confirm3
-printf "$START" "3" "Create resource dependencies"
 if [[ "$confirm3" == "y" || "$confirm3" == "Y" ]]; then
     printf "$START" "3"
     # Terraform Command

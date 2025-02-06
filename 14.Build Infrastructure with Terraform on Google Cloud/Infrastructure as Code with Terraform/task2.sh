@@ -1,3 +1,4 @@
+printf "$START" "2" "Change infrastructure"
 export TASK_2_STEP_1=$(cat <<EOF
 terraform {
   required_providers {
@@ -116,7 +117,6 @@ EOF
 
 ### Task 2:
 read -p "$(printf "$PROMPT_TEMPLATE" "2")" confirm2
-printf "$START" "2" "Change infrastructure"
 
 if [[ "$confirm2" == "y" || "$confirm2" == "Y" ]]; then
     printf "$START" "2" "Change infrastructure"

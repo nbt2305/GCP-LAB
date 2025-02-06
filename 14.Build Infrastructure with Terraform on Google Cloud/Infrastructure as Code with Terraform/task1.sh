@@ -1,3 +1,4 @@
+printf "$START" "1" "Build infrastructure"
 # Task 1
 export TASK_1=$(cat <<EOF
 terraform {
@@ -23,7 +24,6 @@ EOF
 
 
 ### Task 1:
-printf "$START" "1" "Build infrastructure"
 # Override main.tf file
 echo $TASK_1 > main.tf
 # Terraform Command
