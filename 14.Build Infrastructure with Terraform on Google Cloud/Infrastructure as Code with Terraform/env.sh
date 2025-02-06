@@ -30,7 +30,9 @@ fi
 # Export env
 export PROJECT_ID REGION ZONE UNIQUE_BUCKET_NAME
 export START="Starting Task %s: %s...\n"
-export START_STEP="Starting Task %s - Step %s...\n"
+export START_STEP="Starting Task %s - Step %s: %s...\n"
+export CHECK_STEP="Please check Task %s - Step %s: %s...\n"
+export CHECK="Please check Task %s: %s...\n"
 export END="Congratulations complete Task %s!\n"
 export END_STEP="Congratulations complete Task %s - Step %s!\n"
 export CANCEL="Proccess is canceled after Task %s.\n"

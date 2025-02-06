@@ -1,2 +1,12 @@
-Step1: Change env in env.sh
-Step2: Run script.sh
+Guide to Complete Infrastructure as Code with Terraform Lab:
+Task 1. Build infrastructure
+    - Step 1: Build resources -> Check Creating Resources in terraform 
+Task 2. Change infrastructure
+    - Step 1: Adding resources
+    - Step 2: Changing resources -> check Change Infrastructure
+    - Step 3: Destructive changes
+    - Step 4: Destroy infrastructure -> Check Destructive Changes
+Task 3. Create resource dependencies
+    - Step 1: Recreate resource dependencies
+    - Step 2: Assigning a static IP address -> Check Create Resource Dependencies
+    - Step 3: Implicit and explicit dependencies -> Check Create bucket dependent instance

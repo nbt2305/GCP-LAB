@@ -1,5 +1,5 @@
 printf "$START" "3" "Create resource dependencies"
-export TASK_3_STEP_1=$(cat <<EOF
+export TASK_3_STEP_2=$(cat <<EOF
 terraform {
   required_providers {
     google = {
@@ -42,7 +42,7 @@ resource "google_compute_address" "vm_static_ip" {
 EOF
 )
 
-export TASK_3_STEP_2=$(cat <<EOF
+export TASK_3_STEP_3=$(cat <<EOF
 terraform {
   required_providers {
     google = {
@@ -121,18 +121,24 @@ EOF
 read -p "$(printf "$PROMPT_TEMPLATE" "3")" confirm3
 if [[ "$confirm3" == "y" || "$confirm3" == "Y" ]]; then
     printf "$START" "3"
+
+    ## Step 1
+    printf "$START_STEP" "3" "1" "Recreate resource dependencies"
     # Terraform Command
     terraform apply --auto-approve
-    read -p "$(printf "$PROMPT_TEMPLATE_STEP" "3" "1")" confirm3_1
-    if [[ "$confirm3_1" == "y" || "$confirm3_1" == "Y" ]]; then
-        printf "%s\n" "$TASK_3_STEP_1" > main.tf
-        terraform plan -out static_ip
-        terraform apply "static_ip"
-        printf "$END_STEP" "3" "1"
+    printf "$END_STEP" "3" "1"
+
+    read -p "$(printf "$PROMPT_TEMPLATE_STEP" "3" "2")" confirm3_2
     if [[ "$confirm3_2" == "y" || "$confirm3_2" == "Y" ]]; then
         printf "%s\n" "$TASK_3_STEP_2" > main.tf
+        terraform plan -out static_ip
+        terraform apply "static_ip"
+        printf "$END_STEP" "3" "2" "Assigning a static IP address"
+        printf "$CHECK_STEP" "3" "2" "Check Create Resource Dependencies"
+    if [[ "$confirm3_3" == "y" || "$confirm3_3" == "Y" ]]; then
+        printf "%s\n" "$TASK_3_STEP_3" > main.tf
         terraform apply --auto-approve
-        printf "$END_STEP" "3" "2"
+        printf "$END_STEP" "3" "3" "Check Create bucket dependent instance"
     printf "$END" "3"
 else
     printf "$CANCLE" "3"
