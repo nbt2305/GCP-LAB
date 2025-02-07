@@ -32,6 +32,16 @@ BG_COLORS=($BG_RED $BG_GREEN $BG_YELLOW $BG_BLUE $BG_MAGENTA $BG_CYAN)
 RANDOM_TEXT_COLOR=${TEXT_COLORS[$RANDOM % ${#TEXT_COLORS[@]}]}
 RANDOM_BG_COLOR=${BG_COLORS[$RANDOM % ${#BG_COLORS[@]}]}
 
+# Input ZONE
+if [[ -z "$ZONE" ]]; then
+    read -p "Input ZONE: " ZONE
+fi
+
+# Export env
+export INPUT_ERROR="${RED}Errors: Please setup ZONE env before run script.${RESET}"
+
+export ZONE
+
 #----------------------------------------------------start--------------------------------------------------#
 
 echo "${RANDOM_BG_COLOR}${RANDOM_TEXT_COLOR}${BOLD}Starting Execution${RESET}"
