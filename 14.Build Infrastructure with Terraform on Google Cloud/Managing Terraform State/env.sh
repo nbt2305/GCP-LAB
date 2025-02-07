@@ -26,13 +26,6 @@ export CANCEL="${RED}Process is canceled after Task %s.${RESET}\n"
 export PROMPT_TEMPLATE="${CYAN}Do you want to continue Task %s? (y/Y to continue): ${RESET}"
 export PROMPT_TEMPLATE_STEP="${CYAN}Do you want to continue Task %s - Step %s? (y/Y to continue): ${RESET}"
 export PROJECT_ID=$(gcloud config list --format 'value(core.project)')
-# Check env
-if [[ -z "$PROJECT_ID" || -z "$REGION" || -z "$ZONE"|| -z "$UNIQUE_BUCKET_NAME" ]]; then
-    echo -e $INPUT_ERROR
-    exit 1
-fi
-
-export PROJECT_ID REGION
 
 gcloud auth list
 gcloud config list project
