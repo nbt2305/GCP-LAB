@@ -9,11 +9,6 @@ MAGENTA='\033[0;35m'    # MAGENTA - FOCUS
 CYAN='\033[0;36m'       # CYAN - ASK
 RESET='\033[0m'         # RESET - RESET
 ### Input env
-# Input REGION
-if [[ -z "$REGION" ]]; then
-    read -p "Input REGION: " REGION
-fi
-
 # Export env
 export INPUT_ERROR="${RED}Errors: Please setup REGION env before run script.${RESET}"
 export START="${BLUE}Starting Task %s: %s...${RESET}\n"

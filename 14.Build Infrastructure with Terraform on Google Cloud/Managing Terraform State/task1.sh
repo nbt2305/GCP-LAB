@@ -55,10 +55,7 @@ terraform apply --auto-approve
 printf "%s\n" "$TASK_1_STEP_2" > main.tf
 
 # Terraform Commands
-terraform init
-terraform apply --auto-approve
-printf "$END_STEP" "1" "2" "Add Labels and Check Refresh the state"
+terraform init -migrate-state --auto-approve
 
-# End Step 1
 printf "$END" "1"
-printf "$CHECK" "1" "Check Refresh the state"
+printf "$CHECK" "1" "Add Labels and Check Refresh the state"
