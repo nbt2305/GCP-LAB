@@ -18,6 +18,17 @@ BG_WHITE=`tput setab 7`
 
 BOLD=`tput bold`
 RESET=`tput sgr0`
+
+# Input ZONE
+if [[ -z "$ZONE" ]]; then
+    read -p "Input ZONE: " ZONE
+fi
+
+# Export env
+export INPUT_ERROR="${RED}Errors: Please setup ZONE env before run script.${RESET}"
+
+export ZONE
+
 #----------------------------------------------------start--------------------------------------------------#
 
 echo "${YELLOW}${BOLD}Starting${RESET}" "${GREEN}${BOLD}Execution${RESET}"
