@@ -7,6 +7,9 @@ export INPUT_ERROR="${RED}Errors: Please setup ZONE env before run script.${RESE
 
 export ZONE
 
+export DEVSHELL_PROJECT_ID=qwiklabs-gcp-01-34ea3937fd89
+export DEVSHELL_PROJECT_ID-2=qwiklabs-gcp-01-c6be50a95527
+
 export REGION="${ZONE%-*}"
 
 gsutil mb -p $DEVSHELL_PROJECT_ID -c STANDARD -l $REGION -b on gs://$DEVSHELL_PROJECT_ID
