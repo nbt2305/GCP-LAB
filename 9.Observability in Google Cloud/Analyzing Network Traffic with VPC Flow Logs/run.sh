@@ -1,3 +1,12 @@
+# Input ZONE
+if [[ -z "$ZONE" ]]; then
+    read -p "Input ZONE: " ZONE
+fi
+
+# Export env
+export INPUT_ERROR="${RED}Errors: Please setup ZONE env before run script.${RESET}"
+
+# Check env
 if [[ -z "$ZONE" ]]; then
     echo -e $INPUT_ERROR
     exit 1
