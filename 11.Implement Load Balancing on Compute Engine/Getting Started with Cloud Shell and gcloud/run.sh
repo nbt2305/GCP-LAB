@@ -1,10 +1,3 @@
-echo ""
-echo ""
-
-read -p "ENTER ZONE:- " ZONE
-
-gcloud compute instances create gcelab2 --machine-type e2-medium --zone $ZONE
-
-gcloud compute instances add-tags gcelab2 --zone $ZONE --tags http-server,https-server
-
-gcloud compute firewall-rules create default-allow-http --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:80 --source-ranges=0.0.0.0/0 --target-tags=http-server
+curl -LO raw.githubusercontent.com/quiccklabs/Labs_solutions/refs/heads/master/Getting%20Started%20with%20Cloud%20Shell%20and%20gcloud/quicklabgsp002.sh
+sudo chmod +x quicklabgsp002.sh
+./quicklabgsp002.sh
